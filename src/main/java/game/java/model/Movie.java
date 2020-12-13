@@ -26,6 +26,9 @@ public class Movie {
     }
 
     public String randomMovie() {
+        if (movies.isEmpty()) {
+            return null;
+        }
         return movies.get((int) (Math.random() * movies.size()));
     }
 }
