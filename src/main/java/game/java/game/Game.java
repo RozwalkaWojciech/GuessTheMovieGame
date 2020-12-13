@@ -4,6 +4,8 @@ import game.java.menu.Menu;
 import game.java.model.Movie;
 import lombok.Getter;
 
+import java.util.Scanner;
+
 @Getter
 public class Game {
 
@@ -24,12 +26,33 @@ public class Game {
     }
 
     public void start() {
-        while (gameEnd()){
+        while (gameEnd()) {
             Menu.guessMenu();
         }
 
 
     }
+
+    private String inputLetter() {
+        System.out.println("Guess the letter: ");
+        Scanner scanner = new Scanner(System.in);
+        String letter = scanner.nextLine().toLowerCase();
+
+        if (!letter.matches("[a-z]")) {
+            System.out.println("This is not a letter.");
+            return inputLetter();
+        } else if (wrongLetters.contains(letter) || rightLetters.contains(letter)) {
+            System.out.println("You already guessed that letter.");
+            return inputLetter();
+        } else {
+            return letter;
+        }
+    }
+
+    private void guessLetter() {
+
+    }
+
 
     private boolean gameEnd() {
         return chance == 0;
