@@ -29,30 +29,38 @@ public class Game {
         while (gameEnd()) {
             Menu.guessMenu();
         }
-
+        guessLetter();
 
     }
 
-    private String inputLetter() {
-        System.out.println("Guess the letter: ");
-        Scanner scanner = new Scanner(System.in);
-        String letter = scanner.nextLine().toLowerCase();
+    private boolean checkInputLetter(String letter) {
 
         if (!letter.matches("[a-z]")) {
             System.out.println("This is not a letter.");
-            return inputLetter();
+            return false;
         } else if (wrongLetters.contains(letter) || rightLetters.contains(letter)) {
             System.out.println("You already guessed that letter.");
-            return inputLetter();
+            return false;
         } else {
-            return letter;
+            return true;
         }
     }
 
     private void guessLetter() {
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Guess the letter: ");
+        String letter = scanner.nextLine().toLowerCase();
+        if (checkInputLetter(letter)) {
+            if (movieTitle.toLowerCase().contains(letter)) {
+                rightLetters += letter + letter.toUpperCase();
+            } else {
+                chance--;
+                wrongLetters += " " + letter;
+            }
+        } else {
+            guessLetter();
+        }
     }
-
 
     private boolean gameEnd() {
         return chance == 0;
