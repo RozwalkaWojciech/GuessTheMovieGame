@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Movie {
 
-    private List<String> movies;
+    private final List<String> movies;
 
     public Movie(String pathname) {
 
@@ -22,12 +22,10 @@ public class Movie {
             }
         } catch (FileNotFoundException e) {
             System.out.println("File does not exist!");
-            ;
         }
     }
 
     public String randomMovie() {
         return movies.get((int) (Math.random() * movies.size()) + 1);
     }
-
 }
