@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 class MovieTest {
 
     @Test
-    void randomMovie_returnsNullString_givenEmptyList() {
+    void randomMovie_returnsNull_givenEmptyList() {
         //given
         Movie emptyList = new Movie("emptyList");
         //when
