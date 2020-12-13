@@ -26,6 +26,6 @@ public class Movie {
     }
 
     public String randomMovie() {
-        return movies.get((int) (Math.random() * movies.size()) + 1);
+        return movies.get((int) (Math.random() * movies.size()));
     }
 }
