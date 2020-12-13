@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Movie {
@@ -29,6 +30,6 @@ public class Movie {
         if (movies.isEmpty()) {
             return null;
         }
-        return movies.get((int) (Math.random() * movies.size()));
+        return movies.get(new Random().nextInt(movies.size()));
     }
 }

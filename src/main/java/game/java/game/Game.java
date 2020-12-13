@@ -1,5 +1,6 @@
 package game.java.game;
 
+import game.java.menu.Menu;
 import game.java.model.Movie;
 import lombok.Getter;
 
@@ -23,7 +24,11 @@ public class Game {
     }
 
     public void start() {
-//TODO
+        while (gameEnd()){
+            Menu.guessMenu();
+        }
+
+
     }
 
     private boolean gameEnd() {
