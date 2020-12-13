@@ -28,9 +28,21 @@ public class Game {
     public void start() {
         while (gameEnd()) {
             Menu.guessMenu();
+            guessLetter();
         }
-        guessLetter();
+        if (win) {
+            Menu.winMenu();
+        } else {
+            Menu.lostMenu();
+        }
+    }
 
+    public String getHiddenMovieTittle() {
+        if (rightLetters.equals("")) {
+            return movieTitle.replaceAll("[a-zA-Z]", "*");
+        } else {
+            return movieTitle.replaceAll("[a-zA-Z&&[^" + rightLetters + "]]", "*");
+        }
     }
 
     private boolean checkInputLetter(String letter) {
@@ -63,7 +75,10 @@ public class Game {
     }
 
     private boolean gameEnd() {
-        return chance == 0;
+        if (!getHiddenMovieTittle().contains("*")) {
+            win = true;
+        }
+        return chance == 0 || win;
     }
 
 }
