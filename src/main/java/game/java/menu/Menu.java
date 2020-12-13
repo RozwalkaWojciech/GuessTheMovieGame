@@ -1,5 +1,7 @@
 package game.java.menu;
 
+import game.java.game.Game;
+
 public class Menu {
 
     public static void start() {
@@ -10,6 +12,8 @@ public class Menu {
                 "\nIf you lose 10 points, game over!!" +
                 "\nAre you ready? Let's start!\n");
 
+        Game game = new Game();
+        game.start();
     }
 
 }
