@@ -26,7 +26,7 @@ public class Game {
     }
 
     public void start() {
-        while (gameEnd()) {
+        while (!gameEnd()) {
             Menu.guessMenu();
             guessLetter();
         }
@@ -39,9 +39,9 @@ public class Game {
 
     public String getHiddenMovieTittle() {
         if (rightLetters.equals("")) {
-            return movieTitle.replaceAll("[a-zA-Z]", "*");
+            return movieTitle.replaceAll("[a-zA-Z]", "_");
         } else {
-            return movieTitle.replaceAll("[a-zA-Z&&[^" + rightLetters + "]]", "*");
+            return movieTitle.replaceAll("[a-zA-Z&&[^" + rightLetters + "]]", "_");
         }
     }
 
@@ -60,7 +60,7 @@ public class Game {
 
     private void guessLetter() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Guess the letter: ");
+        System.out.println("\nGuess the letter: ");
         String letter = scanner.nextLine().toLowerCase();
         if (checkInputLetter(letter)) {
             if (movieTitle.toLowerCase().contains(letter)) {
@@ -75,7 +75,7 @@ public class Game {
     }
 
     private boolean gameEnd() {
-        if (!getHiddenMovieTittle().contains("*")) {
+        if (!getHiddenMovieTittle().contains("_")) {
             win = true;
         }
         return chance == 0 || win;
