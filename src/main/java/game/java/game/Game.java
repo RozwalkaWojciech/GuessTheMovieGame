@@ -29,9 +29,7 @@ public class Game {
     }
 
     public void start(Game game) {
-
         Menu.start(game);
-
         while (!gameEnd()) {
             Menu.guessMenu(game);
             guessLetter();
@@ -52,7 +50,6 @@ public class Game {
     }
 
     private boolean checkInputLetter(String letter) {
-
         if (!letter.matches("[a-z]")) {
             STDOUT.warn("This is not a letter!");
             return false;
@@ -86,5 +83,4 @@ public class Game {
         }
         return chance == 0 || win;
     }
-
 }
