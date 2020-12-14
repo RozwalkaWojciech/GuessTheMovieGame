@@ -1,9 +1,10 @@
-import game.java.menu.Menu;
+import game.java.game.Game;
 
 public class App {
 
     public static void main(String[] args) {
 
-        Menu.start();
+        Game game = new Game();
+        game.start(game);
     }
 }

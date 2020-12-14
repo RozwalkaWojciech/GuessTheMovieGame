@@ -25,15 +25,18 @@ public class Game {
         win = false;
     }
 
-    public void start() {
+    public void start(Game game) {
+
+        Menu.start(game);
+
         while (!gameEnd()) {
-            Menu.guessMenu();
+            Menu.guessMenu(game);
             guessLetter();
         }
         if (win) {
-            Menu.winMenu();
+            Menu.winMenu(game);
         } else {
-            Menu.lostMenu();
+            Menu.lostMenu(game);
         }
     }
 
