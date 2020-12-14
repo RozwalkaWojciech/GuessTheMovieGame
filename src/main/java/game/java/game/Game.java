@@ -3,12 +3,15 @@ package game.java.game;
 import game.java.menu.Menu;
 import game.java.model.Movie;
 import lombok.Getter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
 @Getter
 public class Game {
 
+    private static final Logger STDOUT = LoggerFactory.getLogger("CONSOLE_OUT");
     private static final String MOVIES_PATH = "src/main/resources/movies.txt";
     private final String movieTitle;
     private int chance;
@@ -51,10 +54,10 @@ public class Game {
     private boolean checkInputLetter(String letter) {
 
         if (!letter.matches("[a-z]")) {
-            System.out.print("This is not a letter!");
+            STDOUT.warn("This is not a letter!");
             return false;
         } else if (wrongLetters.contains(letter) || rightLetters.contains(letter)) {
-            System.out.print("You already guessed that letter!");
+            STDOUT.warn("You already guessed that letter!");
             return false;
         } else {
             return true;
@@ -63,7 +66,7 @@ public class Game {
 
     private void guessLetter() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\nGuess the letter: ");
+        STDOUT.info("\nGuess the letter: ");
         String letter = scanner.nextLine().toLowerCase();
         if (checkInputLetter(letter)) {
             if (movieTitle.toLowerCase().contains(letter)) {
