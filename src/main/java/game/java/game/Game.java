@@ -51,10 +51,10 @@ public class Game {
     private boolean checkInputLetter(String letter) {
 
         if (!letter.matches("[a-z]")) {
-            System.out.println("This is not a letter.");
+            System.out.print("This is not a letter!");
             return false;
         } else if (wrongLetters.contains(letter) || rightLetters.contains(letter)) {
-            System.out.println("You already guessed that letter.");
+            System.out.print("You already guessed that letter!");
             return false;
         } else {
             return true;
